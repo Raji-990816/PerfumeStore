@@ -8,12 +8,13 @@ const userRouter = require('./routes/userRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const port = process.env.PORT;
 const mongo = process.env.MONGO_URI;
+const API = process.env.CLIENT_URL;
 
 //express app
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:3000',  
+    origin: API,  
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     credentials: true,  

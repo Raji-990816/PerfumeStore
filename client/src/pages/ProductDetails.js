@@ -3,9 +3,11 @@ import useFetch from "../hooks/useFetch";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data: frag, error, isPending} = useFetch(`http://localhost:5000/products/${id}`);
+  const { data: frag, error, isPending} = useFetch(`${API}/products/${id}`);
   const { addToCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");

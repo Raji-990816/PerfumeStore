@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import images from "../assets/products";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const Collection = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
@@ -14,7 +16,7 @@ const Collection = () => {
   useEffect(() => {
     const fetchFrag = async() => {
       try{
-        const response = await axios.get("http://localhost:5000/products/");
+        const response = await axios.get(`${API}/products/`);
         setFrag(response.data.items);
         setIsPending(false);
       }catch(err){
