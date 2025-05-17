@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import images from "../assets/products";
+import { images } from "../assets/products";
 
 const API = process.env.REACT_APP_API_BASE_URL;
 
@@ -38,12 +38,9 @@ const Collection = () => {
 
   return (
     <div className="bg-gray-100">
-      <div
-        className="background-image"
-        style={{ backgroundImage: `url(${images.img5})` }}
-      >
-        <div className="page-headline">
-          Fragrance Collection
+      <div className="background-image" style={{ backgroundImage: `url(${images.img5})` }}>
+        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-4">
+          <h1 className="text-xl md:text-2xl font-bold text-center mb-4">Fragrance Collection</h1>                 
         </div>
       </div>
 
