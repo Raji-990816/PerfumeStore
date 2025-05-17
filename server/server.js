@@ -8,16 +8,27 @@ const userRouter = require('./routes/userRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const port = process.env.PORT;
 const mongo = process.env.MONGO_URI;
-const API = process.env.CLIENT_URL;
+// const API = process.env.CLIENT_URL;
+
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://perfume-store-pink.vercel.app'
+  ];
 
 //express app
 const app = express();
 
 const corsOptions = {
-    origin: API,  
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true,  
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   };
 
 //middlewares
