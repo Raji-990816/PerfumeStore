@@ -7,10 +7,13 @@ const BestSellers = () => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
+  const API = process.env.REACT_APP_API_BASE_URL;
+
+
   useEffect(() => {
     const fetchFrag = async() => {
       try{
-        const response = await axios.get("http://localhost:5000/products/");
+        const response = await axios.get(`${API}/products/`);
         setFragrances(response.data.items);
         setIsPending(false);
       }catch(err){
