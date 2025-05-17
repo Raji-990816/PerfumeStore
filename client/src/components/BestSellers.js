@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
+
 const BestSellers = () => {
   const [fragrances, setFragrances] = useState([]);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
-
-  const API = process.env.REACT_APP_API_BASE_URL;
-
 
   useEffect(() => {
     const fetchFrag = async() => {
